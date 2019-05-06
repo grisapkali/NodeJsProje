@@ -1,0 +1,147 @@
+<title>RFID</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='public/css/stilim.css' rel='stylesheet' type='text/css'>
+	<link href='public/css/animate.css' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/w3.css">
+    <link rel="stylesheet" href="public/css/font-awesome.min.css">
+	
+	<style>
+		.button {
+			  padding: 15px 25px;	
+			  font-size: 24px;
+ 			  text-align: center;
+ 			  cursor: pointer;
+ 	 		  outline: none;
+			  color: #fff;
+			  background-color: #4CAF50;
+			  border: none;
+			  border-radius: 15px;
+		      box-shadow: 0 9px #999;
+		}
+    	.button:hover {background-color: #3e8e41}
+
+		.button:active {
+ 			 background-color: #3e8e41;
+ 			 box-shadow: 0 5px #666;
+ 			 transform: translateY(4px);
+		}
+	</style>
+
+
+	<body>
+ 
+		<div class="container-fluid">
+    	    <div class="row">
+                     
+				<nav class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>                        
+						  </button>
+						  <a class="navbar-brand" href="#">Sakarya Üniversitesi</a>
+						</div>
+						  <div class="collapse navbar-collapse" id="myNavbar">
+           		 				<ul class="nav navbar-nav">
+            					    <li class="active"><a href="/">Home</a></li>
+            			        	<li class="dropdown">
+            				   	  		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+               						 	<ul class="dropdown-menu">
+                							  <li><a href="#">Page 1-1</a></li>
+                 						 	  <li><a href="#">Page 1-2</a></li>
+                					          <li><a href="#">Page 1-3</a></li>
+               						   </ul>
+             				  	    </li>
+             				  		<li><a href="#">Page 2</a></li>
+             				  		<li><a href="#">Page 3</a></li>
+            					</ul>
+						 
+								<ul class="nav navbar-nav navbar-right">
+					
+              						<li><a href="/login"><button class="w3-button">Kayıt</button></a></li>
+             					    <li><a href="#"><button class="w3-button ">Kontrol</button></a></li>
+           				  	    </ul>
+         			 	   </div>
+				   
+					    </div>
+	 	   		</nav>
+	  		</div>
+			<div class ="row">
+				<%-body%>
+			</div>
+                 
+                    
+                       
+            
+            
+				
+		</div>				
+            
+                   
+            
+            
+            
+            
+            
+
+<script src="public/js/jquery.min.js"></script>
+<script src="public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="public/js/jquery-2.0.3.min.js"></script>
+<script src="public/js/socket.io.js"></script>
+
+			
+	</body>
+
+    <script>
+        //Animation for bar-navbar
+        function myAccFunc() {
+            var x = document.getElementById("demoAcc");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-green";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" w3-green", "");
+            }
+        }
+        //Animation for bar-navbar
+        function myDropFunc() {
+            var x = document.getElementById("demoDrop");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-green";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" w3-green", "");
+            }
+        }
+    </script>
+
+
+	<script>
+	// Connects with Server
+
+	var socket = io(window.location.hostname + ":8500");
+
+
+	socket.on('rfid', function(data){
+        $("#passwd").val(data);
+        $("#card").empty();
+        $("#passwd").attr('disabled','disabled')
+		$(".icon").addClass('one');
+		$(".help").text("Hoşgeldiniz! Kart ID niz : " + data);
+		setTimeout(function() {
+			$(".icon").removeClass('one');
+            $(".help").text("Lütfen Kartınızı okutun.");
+		}, 2500);
+	});
+
+    </script>
+    
+

@@ -1,0 +1,49 @@
+<div class = "row">
+        <div class="col-md-4">
+
+        </div>
+        
+             <div class ="col-md-3 col-sm-12 col-xs-12 w3-border w3-animate-zoom" >
+                     <div class="w3-center"><br>
+                              <img src="public/images/img_saulogo.png" alt="Avatar" style="width:50%" class="w3-margin-top">
+                     </div>
+                    <form class="container-fluid" action="/login" method="POST">
+                        <div class="w3-section">
+                
+                             <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Kart Sahibi" name="username" required>
+                                              
+                               <div class="w3-margin-bottom" id = "card"> <mark><b>Lütfen Kartınızı okutun.</mark></b> </div>
+                             <input id="passwd" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Kart ID" name="idNumber" required>
+                
+                               <h6><b> Son geçerlilik Tarihi:<br> </b></h6> 
+                              <input class="w3-input w3-border" type="date" placeholder="Son geçerlilik Tarihi" name="lastDate" required>
+                               <h6><b>En erken giriş saati:<br></b> </h6>
+                              <input class="w3-input w3-border" type="time" placeholder="En erken giriş saati" name="lastTime" required>
+                               <h6><b>En geç giriş saati:<br></b></h6> 
+                              <input class="w3-input w3-border w3-margin-bottom" type="time" placeholder="En Geç giriş saati" name="lastTime" required>
+                               <h6><b> Yetkisi:</b><br></h6>
+                              <input class=" w3-border" type="radio" value="personel" name="authority" required> Akademik Personel <br> 
+                              <input class=" w3-border w3-margin-bottom" type="radio" value="ogrenci" name="authority" required>  Ögrenci <br> 
+                
+                            <button class="button w3-block w3-section " type="submit">Kayıt Ol</button>
+                        </div>
+                    </form>
+
+                    <div id = "id02" class = "w3-border">
+                        <div class="panel-footer clearfix">
+
+                           <div class ="pull-right">
+                               <%if(typeof username!='undefined'){%>
+                                 <h2><%=username%></h2>
+                                 <%}%>
+                               <%if(typeof username!='undefined'){%>
+                                    <h3><%=password%></h3>
+                                 <%}%>    
+                            </div>
+                        </div>
+
+                    </div>
+                    
+            
+                </div>
+ </div>
